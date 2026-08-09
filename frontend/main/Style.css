@@ -1,0 +1,194 @@
+/* =========================================================
+   COLORS — edit these to reskin the whole page.
+   Everything below references these variables, so changing
+   a value here updates it everywhere it's used.
+   ========================================================= */
+:root{
+  --bg:          #12140f;   /* page background */
+  --surface:     #1b2016;   /* card background */
+  --border:      #3a4034;   /* card / divider borders */
+  --border-soft: #545c48;   /* lighter border, e.g. buttons */
+
+  --text:        #e8ece2;   /* main text */
+  --text-dim:    #a4ab98;   /* secondary / label text */
+
+  --accent:      #6add5c;   /* "online" green, headline highlight */
+  --accent-dark: #4bb53d;   /* accent hover state */
+  --gold:        #f2b705;   /* copy button */
+}
+
+/* ========================================================= */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.wrap{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  width: 100%;
+}
+
+h1, .logo { font-family: 'Silkscreen', monospace; letter-spacing: 0.5px; }
+code, .mono { font-family: 'IBM Plex Mono', monospace; }
+
+/* ---------- top bar ---------- */
+.top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 56px;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+.logo-mark{
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  border-radius: 3px;
+  box-shadow:
+    inset -3px -3px 0 rgba(0,0,0,0.28),
+    inset 3px 3px 0 rgba(255,255,255,0.18);
+}
+
+.status-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  color: var(--accent);
+  background: rgba(106,221,92,0.08);
+  border: 1px solid rgba(106,221,92,0.3);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+.status-dot{
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 1.8s infinite ease-in-out;
+}
+@keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
+
+/* ---------- hero ---------- */
+.hero{ margin-bottom: 48px; }
+.hero h1{
+  font-size: 30px;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+.hero h1 .accent{ color: var(--accent); }
+.hero .sub{
+  color: var(--text-dim);
+  font-size: 15px;
+  margin-bottom: 26px;
+}
+
+.ip-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ip{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: var(--text);
+  flex: 1;
+}
+.copy-btn{
+  background: var(--gold);
+  color: #241a00;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: inset -3px -3px 0 rgba(0,0,0,0.2);
+}
+.copy-btn:hover{ filter: brightness(1.08); }
+
+/* ---------- stats ---------- */
+.stats{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.stat-card{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px;
+}
+.stat-label{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.stat-value{
+  font-family: 'Silkscreen', monospace;
+  font-size: 26px;
+  color: var(--text);
+}
+.stat-value--small{ font-size: 16px; }
+.stat-max{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.stat-note{
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+.player-list{
+  list-style: none;
+  margin-top: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.player-list li{
+  padding: 4px 0;
+  border-top: 1px solid var(--border);
+}
+.player-list li:first-child{ border-top: none; }
+
+/* ---------- footer ---------- */
+.foot{
+  margin-top: 40px;
+  color: var(--text-dim);
+  font-size: 12.5px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .status-dot{ animation: none; }
+}
+
+@media (max-width: 560px){
+  .stats{ grid-template-columns: 1fr; }
+}
+
+:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+  
